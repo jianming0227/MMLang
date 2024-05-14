@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://de7r7kewbype6"
+path="res://.godot/imported/dialogScene2Grave.dialogue-63df6c1d2df207b735dd02702d3c9a43.tres"
+
+[deps]
+
+source_file="res://Dialog/dialogScene2Grave.dialogue"
+dest_files=["res://.godot/imported/dialogScene2Grave.dialogue-63df6c1d2df207b735dd02702d3c9a43.tres"]
+
+[params]
+
+defaults=true

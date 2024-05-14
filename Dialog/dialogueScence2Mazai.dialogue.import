@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://lygggv3h421p"
+path="res://.godot/imported/dialogueScence2Mazai.dialogue-f799e62126520f06d86e831908686fca.tres"
+
+[deps]
+
+source_file="res://Dialog/dialogueScence2Mazai.dialogue"
+dest_files=["res://.godot/imported/dialogueScence2Mazai.dialogue-f799e62126520f06d86e831908686fca.tres"]
+
+[params]
+
+defaults=true
