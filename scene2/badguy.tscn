@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyu80j68csf3f"]
+
+[ext_resource type="Texture2D" uid="uid://l61w40jvml40" path="res://assets/scene3badguy/Skeleton/Skeleton Idle.png" id="1_228cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3il2"]
+size = Vector2(196, 223.5)
+
+[node name="badguy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(631, 59)
+scale = Vector2(7.3, 6.375)
+texture = ExtResource("1_228cv")
+offset = Vector2(-30, 30)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(131, 124)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(277, 120)
+shape = SubResource("RectangleShape2D_c3il2")

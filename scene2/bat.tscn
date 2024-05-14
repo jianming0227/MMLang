@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbsmlbfif0gbw"]
+
+[ext_resource type="Texture2D" uid="uid://dlohifuswjpij" path="res://assets/scene1trap_haloween/2 Animated objects/Bat1.png" id="1_5xmj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lalq"]
+atlas = ExtResource("1_5xmj4")
+region = Rect2(0, 0, 39, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa4wh"]
+atlas = ExtResource("1_5xmj4")
+region = Rect2(50, 0, 39, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m63bl"]
+atlas = ExtResource("1_5xmj4")
+region = Rect2(100, 0, 39, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qlx3"]
+atlas = ExtResource("1_5xmj4")
+region = Rect2(150, 0, 39, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4rmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lalq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa4wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m63bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qlx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tja6m"]
+size = Vector2(32, 20)
+
+[node name="Area2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(184, 82)
+scale = Vector2(1.60938, 1.64583)
+sprite_frames = SubResource("SpriteFrames_g4rmd")
+autoplay = "default"
+frame_progress = 0.495042
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(185, 81)
+shape = SubResource("RectangleShape2D_tja6m")

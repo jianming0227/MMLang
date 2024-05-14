@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg8t1jxidh1kn"]
+
+[ext_resource type="Texture2D" uid="uid://cgywsmdvvteg0" path="res://assets/scene1trap_haloween/1 Objects/Bat1.png" id="1_ch4h8"]
+[ext_resource type="Texture2D" uid="uid://ct1j3o38nqm0r" path="res://assets/scene1trap_haloween/1 Objects/Bat2.png" id="2_r8248"]
+[ext_resource type="Texture2D" uid="uid://dx18d5yinohws" path="res://assets/scene1trap_haloween/1 Objects/Bat3.png" id="3_2nafk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_re6jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ch4h8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r8248")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2nafk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wklvp"]
+height = 42.0
+
+[node name="CharacterBody_bat1" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1353.75, 16)
+scale = Vector2(4.04999, 2.75)
+sprite_frames = SubResource("SpriteFrames_re6jm")
+autoplay = "default"
+frame_progress = 0.278239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1353, 17)
+shape = SubResource("CapsuleShape2D_wklvp")

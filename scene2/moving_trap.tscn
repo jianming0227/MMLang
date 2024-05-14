@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://b40esyd2lxctv"]
+
+[ext_resource type="Script" path="res://moving_trap.gd" id="1_2dkev"]
+[ext_resource type="Texture2D" uid="uid://qxhnca8m5cdc" path="res://assets/scene1trap1/Plent/Walk.png" id="1_jtp7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a8hl"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2dfm"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ai3h"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a62ww"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycpk6"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ykw"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2jw2"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6whm"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ied3h"]
+atlas = ExtResource("1_jtp7e")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chi87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a8hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2dfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ai3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a62ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycpk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ykw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2jw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6whm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ied3h")
+}],
+"loop": true,
+"name": &"moving_trap",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_de6tm"]
+radius = 19.6469
+
+[sub_resource type="Animation" id="Animation_ai1uu"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-132, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:disable_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0us37"]
+resource_name = "moving_trap"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(92, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kcmv"]
+_data = {
+"RESET": SubResource("Animation_ai1uu"),
+"moving_trap": SubResource("Animation_0us37")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54iu6"]
+radius = 19.0263
+
+[node name="CharacterBody2D_trap" type="CharacterBody2D"]
+script = ExtResource("1_2dkev")
+
+[node name="trap_monster" type="AnimatedSprite2D" parent="."]
+position = Vector2(1173, 537)
+sprite_frames = SubResource("SpriteFrames_chi87")
+animation = &"moving_trap"
+autoplay = "moving_trap"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1178, 575)
+shape = SubResource("CircleShape2D_de6tm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7kcmv")
+}
+
+[node name="top_checker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_checker"]
+position = Vector2(1176.2, 574)
+shape = SubResource("CircleShape2D_54iu6")
+debug_color = Color(0.739444, 0.457563, 0.26155, 0.42)
+
+[connection signal="body_entered" from="top_checker" to="." method="_on_top_checker_body_entered"]

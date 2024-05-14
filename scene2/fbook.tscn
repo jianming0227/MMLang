@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://oonxfm8h76kj"]
+
+[ext_resource type="Texture2D" uid="uid://bx3m5arher5po" path="res://assets/Mobile - Army of Darkness Defense - Evil Book 2.png" id="1_rteio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpcue"]
+atlas = ExtResource("1_rteio")
+region = Rect2(0, 7, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cprsl"]
+atlas = ExtResource("1_rteio")
+region = Rect2(165, 7, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maffw"]
+atlas = ExtResource("1_rteio")
+region = Rect2(0, 151, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6mpp"]
+atlas = ExtResource("1_rteio")
+region = Rect2(165, 151, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h46f4"]
+atlas = ExtResource("1_rteio")
+region = Rect2(0, 295, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdw28"]
+atlas = ExtResource("1_rteio")
+region = Rect2(165, 295, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_421fe"]
+atlas = ExtResource("1_rteio")
+region = Rect2(0, 439, 165, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7u5h"]
+atlas = ExtResource("1_rteio")
+region = Rect2(165, 439, 165, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5wki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpcue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cprsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6mpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h46f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdw28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_421fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7u5h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_fodiy"]
+script/source = "extends AnimatedSprite2D
+var count=0
+
+func _on_area_2d_body_entered(body):
+	if(body.name==\"Player\"):
+		count+=1
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blnpj"]
+size = Vector2(62, 47)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(129, 291)
+scale = Vector2(0.500348, 0.590278)
+sprite_frames = SubResource("SpriteFrames_j5wki")
+autoplay = "default"
+frame_progress = 0.493759
+script = SubResource("GDScript_fodiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(137, 296)
+shape = SubResource("RectangleShape2D_blnpj")
+
+[connection signal="body_entered" from="." to="Sprite2D" method="_on_area_2d_body_entered"]

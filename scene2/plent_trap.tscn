@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://rnsoxt24vbiy"]
+
+[ext_resource type="Texture2D" uid="uid://qxhnca8m5cdc" path="res://assets/scene1trap1/Plent/Walk.png" id="1_gnh17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkptj"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fsya"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(129, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gthqc"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(258, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnyb6"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(387, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgm35"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(516, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y778"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(645, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78a5b"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(774, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ordbx"]
+atlas = ExtResource("1_gnh17")
+region = Rect2(903, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5msye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkptj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fsya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gthqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnyb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgm35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y778")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78a5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ordbx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhcv4"]
+radius = 21.4709
+
+[sub_resource type="Animation" id="Animation_c3g63"]
+resource_name = "moving_plent"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crj65"]
+_data = {
+"moving_plent": SubResource("Animation_c3g63")
+}
+
+[node name="Area2D" type="RigidBody2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1086, 539)
+sprite_frames = SubResource("SpriteFrames_5msye")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1091, 579)
+shape = SubResource("CircleShape2D_fhcv4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_crj65")
+}

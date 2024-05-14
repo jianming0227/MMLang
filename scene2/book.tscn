@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0cr4srmrauwv"]
+
+[ext_resource type="Texture2D" uid="uid://bx3m5arher5po" path="res://assets/Mobile - Army of Darkness Defense - Evil Book 2.png" id="1_vq56g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qq0s"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(0, 0, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea460"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(165, 0, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o2en"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(0, 148, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpmjk"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(165, 148, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gv3o"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(0, 296, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p6en"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(165, 296, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbo5s"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(0, 444, 165, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ht7h"]
+atlas = ExtResource("1_vq56g")
+region = Rect2(165, 444, 165, 148)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlgfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qq0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea460")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o2en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpmjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gv3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p6en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbo5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ht7h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50jmo"]
+size = Vector2(44.25, 30.25)
+
+[node name="Book" type="Area2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(227.75, 158.5)
+scale = Vector2(0.415151, 0.371622)
+sprite_frames = SubResource("SpriteFrames_mlgfb")
+autoplay = "default"
+frame_progress = 0.716199
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(235, 164)
+shape = SubResource("RectangleShape2D_50jmo")
